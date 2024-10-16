@@ -1,0 +1,113 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* fundo claro */
+    color: #333; /* cor do texto padrão */
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #ffffff; /* fundo branco */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    max-width: 200px; /* ajuste conforme necessário */
+}
+
+/* Estilo do título principal */
+h1 {
+    font-size: 2.5em;
+    color: #e60000; /* vermelho Toyota */
+    margin: 20px 0;
+}
+
+/* Estilo do conteúdo principal */
+.main-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilo do botão */
+.button {
+    background-color: #e60000; /* vermelho Toyota */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #c60000; /* tom mais escuro ao passar o mouse */
+}
+
+/* Estilo da seção de carros */
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.car-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px; /* largura fixa para os itens dos carros */
+}
+
+.car-item img {
+    max-width: 100%; /* garante que a imagem não ultrapasse a largura do container */
+    border-radius: 5px;
+}
+
+/* Estilo de rodapé */
+footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilo para mensagens de alerta */
+.alert {
+    background-color: #ffcc00; /* amarelo de alerta */
+    color: #333;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .car-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .car-item {
+        width: 90%; /* largura ajustada para dispositivos menores */
+    }
+}
