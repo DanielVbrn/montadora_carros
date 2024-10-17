@@ -3,15 +3,19 @@ import AppDataSource from "../config/config_database";
 import ModeloVeiculo from "../models/ModeloVeiculo";
 import Montadora from "../models/Montadora";
 
+
+
+
 class ModeloController {
     public static async getAdicionarModelo(req: Request, res: Response): Promise<any> {
-        // Busca todas as montadoras cadastradas
         const montadoras = await AppDataSource.getRepository(Montadora).find();
         const montadoraOptions = montadoras.map(m => `<option value="${m.id}">${m.nome}</option>`).join("");
 
         return res.send(`
             <html>
             <head>
+                <link rel="stylesheet" href="/css/form.css">
+
                 <title>Adicionar Modelo de Veículo</title>
             </head>
             <body>
@@ -59,9 +63,9 @@ class ModeloController {
             novoModelo.montadora_id = montadora_id;
             novoModelo.valor_referencia = parseFloat(valor_referencia);
             novoModelo.motorizacao = parseFloat(motorizacao);
-            novoModelo.turbo = turbo === 'true';
-            novoModelo.automatico = automatico === 'true';
-
+            novoModelo.automatico = req.body.automatico === 'on';
+            novoModelo.turbo = req.body.turbo === 'on';
+            
             await AppDataSource.getRepository(ModeloVeiculo).save(novoModelo);
 
             return res.redirect('/modelos/listar');
@@ -120,7 +124,6 @@ class ModeloController {
         return res.redirect('/modelos/listar');
     }
 
-    
     
     
     public static async getEditarModelo(req: Request, res: Response): Promise<any> {

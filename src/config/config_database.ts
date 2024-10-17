@@ -3,6 +3,7 @@ import { DataSource } from 'typeorm';
 import dotenv from "dotenv"
 import Veiculo from "../models/Veiculo";
 import Montadora from "../models/Montadora";
+import ModeloVeiculo from "../models/ModeloVeiculo";
 
 
 dotenv.config()
@@ -22,7 +23,7 @@ const AppDataSource = new DataSource({
   database: name_db_env,
   synchronize: true,
   logging: true,
-  entities: [Montadora, Veiculo],
+  entities: [Montadora, Veiculo, ModeloVeiculo],
   subscribers: [],
   migrations: [],
 });

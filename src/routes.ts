@@ -2,6 +2,7 @@ import { Router } from "express";
 import MontadoraController from "./controller/MontadoraController";
 import HomeController from "./controller/HomeController";
 import VeiculoController from "./controller/VeiculoController";
+import ModeloController from "./controller/ModeloVeiculoController";
 
 const router = Router();
 
@@ -14,6 +15,15 @@ router.post('/montadoras/cadastrar', MontadoraController.cadastrarMontadora);
 router.get('/montadoras/listar', MontadoraController.listarMontadoras);
 router.put('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
 router.delete('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
+
+
+// Rotas para modelos
+router.get('/modelosVeiculos/listar', ModeloController.listarModelos);
+router.post('/modelosVeiculos/cadastrar', ModeloController.adicionarModelo);
+router.get('/montadoras/listar', MontadoraController.listarMontadoras);
+router.put('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
+router.delete('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
+
 
 
 
