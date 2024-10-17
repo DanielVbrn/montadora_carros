@@ -1,0 +1,48 @@
+header {
+    height: 400px;
+    background-size: cover;
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+    padding-top: 150px;
+    font-size: 48px;
+}
+
+header p {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+section {
+    padding: 20px;
+}
+
+section h2 {
+    font-size: 28px;
+}
+
+section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: yellow;
+    padding: 20px;
+    text-align: center;
+}
+
+footer h3 {
+    font-size: 24px;
+}
+
+footer p {
+    font-size: 18px;
+}

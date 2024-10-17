@@ -1,10 +1,23 @@
 import { Router } from "express";
-import VeiculoController from "./controller/MontadoraController";
+import MontadoraController from "./controller/MontadoraController";
 import HomeController from "./controller/HomeController";
+import VeiculoController from "./controller/VeiculoController";
 
 const router = Router();
 
-router.get("/", HomeController.getHomePage); // Rota para a página inicial
+// Rota para a página inicial
+router.get("/", HomeController.getHomePage); 
+
+// Rotas para montadoras
+router.get('/montadoras/cadastrar', MontadoraController.getCadastrarMontadora);
+router.post('/montadoras/cadastrar', MontadoraController.cadastrarMontadora);
+router.get('/montadoras/listar', MontadoraController.listarMontadoras);
+router.put('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
+router.delete('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
+
+
+
+//Rotas para veiculos
 router.get("/veiculos/adicionar", VeiculoController.getAdicionarVeiculo);
 router.post("/veiculos/adicionar", VeiculoController.adicionarVeiculo);
 router.get("/veiculos/listar", VeiculoController.listarVeiculos);

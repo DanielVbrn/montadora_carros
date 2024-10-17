@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import AppDataSource from "./config/config_database";
 import router from "./routes";
+import path from "path";
 
 
 
@@ -20,7 +21,7 @@ AppDataSource.initialize()
 
 
 app.use(cors())
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(router)
 

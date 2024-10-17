@@ -1,37 +1,33 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo do body */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9; /* fundo claro */
-    color: #333; /* cor do texto padrão */
+    background-color: #f9f9f9;
+    color: #333; 
 }
 
 /* Estilo do cabeçalho */
 header {
-    background-color: #ffffff; /* fundo branco */
+    background-color: #ffffff;
     padding: 20px 0;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header img {
-    max-width: 200px; /* ajuste conforme necessário */
+    max-width: 200px;
 }
 
-/* Estilo do título principal */
 h1 {
     font-size: 2.5em;
-    color: #e60000; /* vermelho Toyota */
+    color: #e60000; 
     margin: 20px 0;
 }
 
-/* Estilo do conteúdo principal */
 .main-content {
     padding: 20px;
     display: flex;
@@ -39,9 +35,8 @@ h1 {
     align-items: center;
 }
 
-/* Estilo do botão */
 .button {
-    background-color: #e60000; /* vermelho Toyota */
+    background-color: #e60000; 
     color: white;
     border: none;
     padding: 15px 30px;
@@ -53,10 +48,10 @@ h1 {
 }
 
 .button:hover {
-    background-color: #c60000; /* tom mais escuro ao passar o mouse */
+    background-color: #c60000;
 }
 
-/* Estilo da seção de carros */
+
 .car-list {
     display: flex;
     flex-wrap: wrap;
@@ -72,15 +67,14 @@ h1 {
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 300px; /* largura fixa para os itens dos carros */
+    width: 300px; 
 }
 
 .car-item img {
-    max-width: 100%; /* garante que a imagem não ultrapasse a largura do container */
+    max-width: 100%; 
     border-radius: 5px;
 }
 
-/* Estilo de rodapé */
 footer {
     background-color: #f8f8f8;
     text-align: center;
@@ -90,9 +84,9 @@ footer {
     width: 100%;
 }
 
-/* Estilo para mensagens de alerta */
+
 .alert {
-    background-color: #ffcc00; /* amarelo de alerta */
+    background-color: #ffcc00; 
     color: #333;
     padding: 15px;
     margin: 20px 0;
@@ -100,7 +94,7 @@ footer {
     text-align: center;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     .car-list {
         flex-direction: column;
@@ -108,6 +102,6 @@ footer {
     }
 
     .car-item {
-        width: 90%; /* largura ajustada para dispositivos menores */
+        width: 90%; 
     }
 }
