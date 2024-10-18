@@ -3,9 +3,6 @@ import AppDataSource from "../config/config_database";
 import ModeloVeiculo from "../models/ModeloVeiculo";
 import Montadora from "../models/Montadora";
 
-
-
-
 class ModeloController {
     public static async getAdicionarModelo(req: Request, res: Response): Promise<any> {
         const montadoras = await AppDataSource.getRepository(Montadora).find();
@@ -15,14 +12,13 @@ class ModeloController {
             <html>
             <head>
                 <link rel="stylesheet" href="/css/form.css">
-
                 <title>Adicionar Modelo de Veículo</title>
             </head>
             <body>
                 <h1>Adicionar Modelo de Veículo</h1>
-                <form method="POST" action="/modelos/adicionar">
+                <form method="POST" action="/modelos/cadastrar">
                     <label for="montadora">Montadora:</label>
-                    <select id="montadora" name="montadora_id" required>
+                    <select id="montadora" name="montadora" required>
                         ${montadoraOptions}
                     </select><br>
 
@@ -32,7 +28,7 @@ class ModeloController {
                     <label for="valor_referencia">Valor de Referência:</label>
                     <input type="number" id="valor_referencia" name="valor_referencia" required><br>
 
-                    <label for="motorizacao">Motorização (ex: 2.0):</label>
+                    <label for="motorizacao">Motorização :</label>
                     <input type="number" id="motorizacao" name="motorizacao" required><br>
 
                     <label for="turbo">Turbo:</label>
@@ -56,15 +52,15 @@ class ModeloController {
 
     public static async adicionarModelo(req: Request, res: Response): Promise<any> {
         try {
-            const { nome, montadora_id, valor_referencia, motorizacao, turbo, automatico } = req.body;
+            const { nome, montadora, valor_referencia, motorizacao, turbo, automatico } = req.body;
 
             const novoModelo = new ModeloVeiculo();
             novoModelo.nome = nome;
-            novoModelo.montadora_id = montadora_id;
+            novoModelo.montadora = { id: Number(montadora) } as Montadora; 
             novoModelo.valor_referencia = parseFloat(valor_referencia);
             novoModelo.motorizacao = parseFloat(motorizacao);
-            novoModelo.automatico = req.body.automatico === 'on';
-            novoModelo.turbo = req.body.turbo === 'on';
+            novoModelo.automatico = automatico === 'true';
+            novoModelo.turbo = turbo === 'true';
             
             await AppDataSource.getRepository(ModeloVeiculo).save(novoModelo);
 
@@ -109,9 +105,9 @@ class ModeloController {
             <body>
                 <h1>Lista de Modelos de Veículos</h1>
                 <ul>
-                    ${modelos.map(m => `<li>${m.nome} (${m.motorizacao}L) - ${m.automatico ? 'Automático' : 'Manual'} - Montadora: ${m.nome}</li>`).join('')}
+                    ${modelos.map(m => `<li>${m.nome} (${m.motorizacao}L) - ${m.automatico ? 'Automático' : 'Manual'} - Montadora: ${m.montadora.nome}</li>`).join('')}
                 </ul>
-                <a href="/modelos/adicionar">Adicionar Novo Modelo</a>
+                <a href="/modelos/cadastrar">Adicionar Novo Modelo</a>
             </body>
             </html>
         `);
@@ -124,8 +120,6 @@ class ModeloController {
         return res.redirect('/modelos/listar');
     }
 
-    
-    
     public static async getEditarModelo(req: Request, res: Response): Promise<any> {
         const modeloId = req.params.id;
         const modelo = await AppDataSource.getRepository(ModeloVeiculo).findOneBy({ id: Number(modeloId) });
@@ -136,7 +130,7 @@ class ModeloController {
     
         const montadoras = await AppDataSource.getRepository(Montadora).find();
         const montadoraOptions = montadoras.map(m => 
-            `<option value="${m.id}" ${m.id === modelo.montadora_id ? 'selected' : ''}>${m.nome}</option>`
+            `<option value="${m.id}" ${m.id === modelo.montadora.id ? 'selected' : ''}>${m.nome}</option>`
         ).join("");
     
         return res.send(`
@@ -148,7 +142,7 @@ class ModeloController {
                 <h1>Editar Modelo de Veículo</h1>
                 <form method="POST" action="/modelos/editar/${modeloId}">
                     <label for="montadora">Montadora:</label>
-                    <select id="montadora" name="montadora_id" required>
+                    <select id="montadora" name="montadora" required>
                         ${montadoraOptions}
                     </select><br>
     
@@ -179,8 +173,6 @@ class ModeloController {
             </html>
         `);
     }
-    
-    
-    
 }
+
 export default ModeloController;

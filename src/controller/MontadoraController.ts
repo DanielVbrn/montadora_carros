@@ -9,7 +9,7 @@ class MontadoraController {
             <html>
             <head>
                 <title>Cadastrar Montadora</title>
-                <link rel="stylesheet" href="/css/styles.css">
+                <link rel="stylesheet" href="/css/form.css">
             </head>
             <body>
                 <h1>Cadastrar Montadora</h1>
@@ -35,16 +35,14 @@ class MontadoraController {
         try {
             const { nome, pais, ano_fundacao } = req.body;
     
-            // Cria uma nova instância de Montadora
             const novaMontadora = new Montadora();
             novaMontadora.nome = nome;
             novaMontadora.pais = pais;
             novaMontadora.ano_fundacao = parseInt(ano_fundacao);
     
-            // Salva a montadora no banco de dados
             await AppDataSource.getRepository(Montadora).save(novaMontadora);
     
-            return res.redirect('/montadoras/listar'); // Redireciona para a lista de montadoras
+            return res.redirect('/montadoras/listar'); 
         } catch (error) {
             console.error("Erro ao cadastrar montadora:", error);
             return res.status(500).send("Erro ao cadastrar montadora");
@@ -122,10 +120,7 @@ class MontadoraController {
         const montadoraId = Number(req.params.id);
         await AppDataSource.getRepository(Montadora).delete({ id: montadoraId });
         return res.redirect('/montadoras/listar');
-    };
-
-    
-    
+    };   
     
 }
 

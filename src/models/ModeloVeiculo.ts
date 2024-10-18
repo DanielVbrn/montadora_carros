@@ -1,16 +1,13 @@
-import { PrimaryGeneratedColumn, Column, Entity } from "typeorm"
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from "typeorm";
+import Montadora from "./Montadora";
 
 @Entity()
-
 class ModeloVeiculo {
     @PrimaryGeneratedColumn()
     id!: number;
 
     @Column()
     nome!: string; 
-
-    @Column()
-    montadora_id!: number; 
 
     @Column()
     valor_referencia!: number; 
@@ -22,8 +19,10 @@ class ModeloVeiculo {
     turbo!: boolean;
     
     @Column()
-    automatico!: boolean
+    automatico!: boolean;
 
+    @ManyToOne(() => Montadora, montadora => montadora.modelos)
+    montadora!: Montadora; 
 }
 
 export default ModeloVeiculo;

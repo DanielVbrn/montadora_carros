@@ -10,13 +10,11 @@ const app = express();
 const PORT = process.env.PORT; 
 
 
-// Inicializando a conexão com o banco de dados
 AppDataSource.initialize()
   .then(() => {
     console.log('Conexão com o banco de dados estabelecida!');
   })
   .catch((error) => console.log('Erro ao conectar ao banco de dados:', error));
-
 
 
 

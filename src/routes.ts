@@ -18,11 +18,11 @@ router.delete('/montadoras/atualizar/:id', MontadoraController.atualizarMontador
 
 
 // Rotas para modelos
-router.get('/modelosVeiculos/listar', ModeloController.listarModelos);
-router.post('/modelosVeiculos/cadastrar', ModeloController.adicionarModelo);
-router.get('/montadoras/listar', MontadoraController.listarMontadoras);
-router.put('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
-router.delete('/montadoras/atualizar/:id', MontadoraController.atualizarMontadora);
+router.get('/modelos/listar', ModeloController.listarModelos);
+router.get('/modelos/cadastrar', ModeloController.getAdicionarModelo);
+router.post('/modelos/cadastrar', ModeloController.adicionarModelo);
+router.put('/modelos/atualizar/:id', ModeloController.getEditarModelo);
+router.delete('/modelos/delete/:id', ModeloController.removerModelo);
 
 
 

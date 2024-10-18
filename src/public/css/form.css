@@ -1,6 +1,7 @@
 
+
+    
 header {
-    background: url('/images/vehicle_add_background.jpg') no-repeat center center;
     height: 400px;
     background-size: cover;
 }
@@ -20,27 +21,40 @@ form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    justify-content: center;
+    align-items: start;
+    background-color: #3333;
+    width: 30em;
+    height: 40em;
+    padding: 1.5em;
+    border-radius: 10px;
+
+
 }
 
 form label {
-    font-size: 16px;
+    font-size: 1.6em;
     font-weight: bold;
 }
 
 form input, form select {
+    width: 20em;
     padding: 8px;
     font-size: 14px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    
 }
 
 button {
-    background-color: red;
+    width: 20em;
+    background-color: rgb(0, 132, 255);
     color: white;
     padding: 10px 20px;
     border: none;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 button:hover {

@@ -3,6 +3,7 @@ import Veiculo from "../models/Veiculo";
 import Montadora from "../models/Montadora";
 import AppDataSource from "../config/config_database";
 import { Like } from "typeorm";
+import ModeloVeiculo from "../models/ModeloVeiculo";
 
 class VeiculoController {
     public static getAdicionarVeiculo = async (req: Request, res: Response): Promise<any> => {
@@ -13,7 +14,7 @@ class VeiculoController {
             <html>
             <head>
                 <title>Adicionar Veículo</title>
-                <link rel="stylesheet" href="/css/styles.css">
+                <link rel="stylesheet" href="/css/form.css">
                 <script>
                     async function carregarModelos() {
                         const montadoraId = document.getElementById('montadora').value;
@@ -68,34 +69,39 @@ class VeiculoController {
 
     public static adicionarVeiculo = async (req: Request, res: Response): Promise<any> => {
         try {
-            const { montadoraId, modelo_id, name, cor, ano_fabricacao, ano_modelo, valor, placa, vendido } = req.body;
+            
+            const {montadora_id, modelo_id, name, cor, ano_fabricacao, ano_modelo, valor, placa, vendido} = req.body
     
-            const montadora = await AppDataSource.getRepository(Montadora).findOneBy({ id: Number(montadoraId) });
-            if (!montadora) {
-                return res.status(400).send("Montadora não encontrada");
+            const montadora = AppDataSource.getRepository(Montadora).findOneBy({id:Number(montadora_id)})
+    
+            if(!montadora) {
+                return res.status(400).send("Montadora não encontrada!");
             }
-
-            const novoVeiculo = new Veiculo();
-            novoVeiculo.modelo_id = modelo_id;
-            novoVeiculo.name = name;  
-            novoVeiculo.cor = cor;
-            novoVeiculo.ano_fabricacao = parseInt(ano_fabricacao);
-            novoVeiculo.ano_modelo = parseInt(ano_modelo);
-            novoVeiculo.valor = parseFloat(valor);
-            novoVeiculo.placa = placa;
-            novoVeiculo.vendido = vendido === 'on';
     
-            await AppDataSource.getRepository(Veiculo).save(novoVeiculo);
+            const modelo = await AppDataSource.getRepository(ModeloVeiculo).findOneBy({ id: Number(modelo_id) });
+            if (!modelo) {
+                return res.status(400).send("Modelo não encontrado");
+            }
     
-            return res.redirect('/veiculos/listar');
+            const newVeiculo = new Veiculo();
+            newVeiculo.modelo_id = modelo_id;
+            newVeiculo.name = name;
+            newVeiculo.cor = cor;
+            newVeiculo.ano_fabricacao = ano_fabricacao;
+            newVeiculo.ano_modelo = ano_modelo;
+            newVeiculo.valor = valor;
+            newVeiculo.placa = placa;
+            newVeiculo.vendido = vendido === "on";
+    
+            await AppDataSource.getRepository(Veiculo).save(newVeiculo);
+    
+            return res.redirect("/veiculos/listar");
         } catch (error) {
-            console.error("Erro ao salvar veículo:", error);
-            return res.status(500).send("Erro ao salvar veículo");
+            console.error("Erro ao salvar o veículo: ",error);
+            return res.status(500).send("Erro ao salvar veículo!");
         }
+
     };
-    
-      
-    
 
     public static listarVeiculos = async (req: Request, res: Response): Promise<any> => {
         const veiculos = await AppDataSource.getRepository(Veiculo).find();

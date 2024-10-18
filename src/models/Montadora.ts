@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import ModeloVeiculo from "./ModeloVeiculo";
 
 @Entity()
 class Montadora {
@@ -13,6 +14,9 @@ class Montadora {
 
     @Column({ type: "int" })
     ano_fundacao!: number;
+
+    @OneToMany(() => ModeloVeiculo, modeloVeiculo => modeloVeiculo.montadora)
+    modelos!: ModeloVeiculo[]; 
 }
 
 export default Montadora;
