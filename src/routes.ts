@@ -26,7 +26,6 @@ router.delete('/modelos/delete/:id', ModeloController.removerModelo);
 
 
 
-
 //Rotas para veiculos
 router.get("/veiculos/adicionar", VeiculoController.getAdicionarVeiculo);
 router.post("/veiculos/adicionar", VeiculoController.adicionarVeiculo);

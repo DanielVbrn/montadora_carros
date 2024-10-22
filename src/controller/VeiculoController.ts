@@ -27,7 +27,7 @@ class VeiculoController {
                     }
                 </script>
             </head>
-            <body>
+            <body>  
                 <h1>Adicionar Veículo</h1>
                 <form method="POST" action="/veiculos/adicionar">
                     <label for="montadora">Montadora:</label>
@@ -72,7 +72,7 @@ class VeiculoController {
             
             const {montadora_id, modelo_id, name, cor, ano_fabricacao, ano_modelo, valor, placa, vendido} = req.body
     
-            const montadora = AppDataSource.getRepository(Montadora).findOneBy({id:Number(montadora_id)})
+            const montadora = await AppDataSource.getRepository(Montadora).findOneBy({id:Number(montadora_id)})
     
             if(!montadora) {
                 return res.status(400).send("Montadora não encontrada!");
@@ -102,6 +102,22 @@ class VeiculoController {
         }
 
     };
+
+    public static listarModelosPorMontadora = async (req: Request, res: Response): Promise<any> => {
+        const montadoraId = req.params.montadoraId;
+
+        try {
+            const modelos = await AppDataSource.getRepository(ModeloVeiculo).find({
+                where: { montadora: { id: Number(montadoraId) } }
+            });
+
+            return res.json(modelos);
+        } catch (error) {
+            console.error("Erro ao buscar modelos: ", error);
+            return res.status(500).send("Erro ao buscar modelos.");
+        }
+    };
+
 
     public static listarVeiculos = async (req: Request, res: Response): Promise<any> => {
         const veiculos = await AppDataSource.getRepository(Veiculo).find();

@@ -3,7 +3,6 @@ import Montadora from "../models/Montadora";
 import AppDataSource from "../config/config_database";
 
 class MontadoraController {
-
     public static getCadastrarMontadora = async (req: Request, res: Response): Promise<any> => {
         return res.send(`
             <html>
@@ -60,6 +59,10 @@ class MontadoraController {
 
         return res.send(`
             <html>
+            <head>
+                <link rel="stylesheet" href="/css/list.css">
+                    
+            </head>
             <body>
                 <h1>Lista de Montadoras (${totalMontadoras} Cadastradas)</h1>
                 <ul>${montadoraList}</ul>

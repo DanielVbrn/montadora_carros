@@ -71,6 +71,9 @@ class ModeloController {
         }
     }
 
+
+
+
     public static async listarModelos(req: Request, res: Response): Promise<any> {
         const { nomeModelo, automatico, motorizacao, montadoraNome, ordem, atributo } = req.query;
     
@@ -100,6 +103,8 @@ class ModeloController {
         return res.send(`
             <html>
             <head>
+                <link rel="stylesheet" href="/css/list.css">
+
                 <title>Lista de Modelos de Veículos</title>
             </head>
             <body>

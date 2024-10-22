@@ -25,7 +25,6 @@ form {
     align-items: start;
     background-color: #3333;
     width: 30em;
-    height: 40em;
     padding: 1.5em;
     border-radius: 10px;
 
@@ -58,5 +57,5 @@ button {
 }
 
 button:hover {
-    background-color: darkred;
+    background-color: rgb(88, 81, 81);
 }

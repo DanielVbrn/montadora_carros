@@ -68,7 +68,7 @@ form select {
 form button {
     width: 100%;
     padding: 10px;
-    background-color: #333;
+    background-color: rgb(0, 132, 255);
     color: white;
     border: none;
     border-radius: 4px;
@@ -77,7 +77,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #555;
+    background-color: rgba(0, 132, 255, 0.308);
 }
 
 ul {

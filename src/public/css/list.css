@@ -1,0 +1,96 @@
+/* Estilizando o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilo do cabeçalho principal */
+h1 {
+    color: #333;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+/* Estilo para os títulos dos veículos */
+h2 {
+    color: #555;
+    font-size: 1.5em;
+    margin: 15px 0;
+}
+
+/* Estilo para a lista de veículos */
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* Estilo dos itens da lista */
+li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+}
+
+/* Estilo para os links */
+a {
+    text-decoration: none;
+    color: #007bff;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+/* Estilo para o link ao passar o mouse */
+a:hover {
+    color: #0056b3;
+}
+
+/* Botão de adicionar novo veículo */
+a[href="/veiculos/adicionar"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+a[href="/veiculos/adicionar"]:hover {
+    background-color: #218838;
+}
+
+/* Estilo para indicar o status Vendido */
+li:contains('Vendido') {
+    color: red;
+}
+
+/* Layout responsivo */
+@media (max-width: 600px) {
+    ul {
+        width: 100%;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    a {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
