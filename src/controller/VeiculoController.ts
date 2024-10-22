@@ -138,6 +138,8 @@ class VeiculoController {
                 <h1>Lista de Veículos</h1>
                 <ul>${veiculoList}</ul>
                 <a href="/veiculos/adicionar">Adicionar Novo Veículo</a>
+                <br/>
+                <a href="/">Página Inicial</a>
             </body>
             </html>
         `);

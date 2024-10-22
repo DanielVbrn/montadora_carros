@@ -113,6 +113,9 @@ class ModeloController {
                     ${modelos.map(m => `<li>${m.nome} (${m.motorizacao}L) - ${m.automatico ? 'Automático' : 'Manual'} - Montadora: ${m.montadora.nome}</li>`).join('')}
                 </ul>
                 <a href="/modelos/cadastrar">Adicionar Novo Modelo</a>
+                <br/>
+                <a href="/">Página Inicial</a>
+
             </body>
             </html>
         `);
