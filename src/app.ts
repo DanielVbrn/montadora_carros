@@ -7,7 +7,7 @@ import path from "path";
 
 
 const app = express();
-const PORT = process.env.PORT; 
+const PORT = process.env.PORT || 10000; // Defina um valor padrão, caso a variável não seja definida
 
 
 AppDataSource.initialize()
@@ -17,8 +17,15 @@ AppDataSource.initialize()
   .catch((error) => console.log('Erro ao conectar ao banco de dados:', error));
 
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  exposedHeaders: ["Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization"], 
 
-app.use(cors())
+}
+
+app.use(cors(corsOptions))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(router)
