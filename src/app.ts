@@ -7,7 +7,7 @@ import path from "path";
 
 
 const app = express();
-const PORT = process.env.PORT || 10000; // Defina um valor padrão, caso a variável não seja definida
+const PORT = process.env.PORT || 3333; // Defina um valor padrão, caso a variável não seja definida
 
 
 AppDataSource.initialize()

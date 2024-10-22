@@ -23,6 +23,7 @@ class MontadoraController {
                     <input type="number" id="ano_fundacao" name="ano_fundacao" required><br>
                     
                     <button type="submit">Cadastrar Montadora</button>
+                    <a href="/">Página Inicial</a>
                 </form>
             </body>
             </html>
