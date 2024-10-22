@@ -61,7 +61,7 @@ class MontadoraController {
             <html>
             <head>
                 <link rel="stylesheet" href="/css/list.css">
-                    
+
             </head>
             <body>
                 <h1>Lista de Montadoras (${totalMontadoras} Cadastradas)</h1>
@@ -123,8 +123,7 @@ class MontadoraController {
         const montadoraId = Number(req.params.id);
         await AppDataSource.getRepository(Montadora).delete({ id: montadoraId });
         return res.redirect('/montadoras/listar');
-    };   
-    
+    };
 }
 
 export default MontadoraController;
