@@ -18,7 +18,6 @@ AppDataSource.initialize()
 
 
 const corsOptions = {
-  origin: "http://localhost:3000",
   methods: ["GET", "POST", "PUT", "DELETE"],
   exposedHeaders: ["Authorization"],
   allowedHeaders: ["Content-Type", "Authorization"], 
