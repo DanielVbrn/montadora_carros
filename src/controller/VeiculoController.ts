@@ -125,7 +125,11 @@ class VeiculoController {
             `<h2>${v.name}</h2>
              <li>${v.modelo_id} (${v.placa}) - ${v.vendido ? 'Vendido' : 'Disponível'} 
             <a href="/veiculos/editar/${v.id}">Editar</a> 
-            <a href="/veiculos/remover/${v.id}">Remover</a></li>`
+            <a href="/veiculos/remover/${v.id}">Remover</a></li>
+            <br/>
+            <a href="/">Página Inicial</a>
+            
+            `
         ).join("");
 
         return res.send(`
@@ -158,6 +162,16 @@ class VeiculoController {
             `<option value="${m.id}" ${m.id === veiculo.id ? 'selected' : ''}>${m.nome}</option>`
         ).join("");
 
+        const modelos = await AppDataSource.getRepository(ModeloVeiculo).find({
+            where: { montadora: { id: Number(montadoras) } },
+            relations: ["montadora"]
+        });
+                const modeloOptions = modelos.map(md => 
+            `<option value="${md.id}" ${md.id === md.montadora.id ? 'selected' : ''}>${md.nome}</option>`
+        ).join("");
+
+
+
         return res.send(`
             <html>
             <head>
@@ -173,7 +187,7 @@ class VeiculoController {
                     </select><br>
 
                     <label for="modelo_id">Modelo ID:</label>
-                    <input type="text" id="modelo_id" name="modelo_id" value="${veiculo.modelo_id}" required><br>
+                    <input type="text" id="modelo_id" name="modelo_id" value="${modeloOptions}" required><br>
 
                     <label for="cor">Cor:</label>
                     <input type="text" id="cor" name="cor" value="${veiculo.cor}" required><br>

@@ -69,6 +69,8 @@ class MontadoraController {
                 <h1>Lista de Montadoras (${totalMontadoras} Cadastradas)</h1>
                 <ul>${montadoraList}</ul>
                 <a href="/montadoras/cadastrar">Cadastrar Nova Montadora</a>
+                <br/>
+                <a href="/">Página Inicial</a>   
             </body>
             </html>
         `);
